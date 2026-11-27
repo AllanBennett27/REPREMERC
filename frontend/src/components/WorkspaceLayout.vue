@@ -21,12 +21,12 @@ const sections = [
 const hash = ref(window.location.hash)
 const current = computed(() => sections.find(section => section.path === hash.value) ?? sections[0])
 
-function syncLocation() {
+function syncHashFromLocation() {
   hash.value = window.location.hash
 }
 
-onMounted(() => window.addEventListener('hashchange', syncLocation))
-onUnmounted(() => window.removeEventListener('hashchange', syncLocation))
+onMounted(() => window.addEventListener('hashchange', syncHashFromLocation))
+onUnmounted(() => window.removeEventListener('hashchange', syncHashFromLocation))
 
 async function signOut() {
   error.value = ''
